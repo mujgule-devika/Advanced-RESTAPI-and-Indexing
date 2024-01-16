@@ -1,8 +1,6 @@
-# RESTful API Design for Insurance Domain
+# RESTful API Design for Distributed Software Systems to handle any structured Data
 
-Project for Class Advance Big Data Application / Indexing
-
-Implemented Rest API in NodeJS that can handle any structured data in Json, validate the same and save the Json Schema in Redis and Elastic Search.
+Implemented Rest API in NodeJS that can handle any structured data in Json, validate the same and save the Json Schema in Redis. Use indexing techiques using Elastic Search to support logical operators, wildcards, geolocation, join, and aggregate queries.
 
 ## Features
 
@@ -22,26 +20,26 @@ Implemented Rest API in NodeJS that can handle any structured data in Json, vali
 
 ### API Endpoints
 
-(A Sample JSON Object for the plan can be found  [here](https://github.com/jayashree1992/Advanced_Big_Data_Indexing/blob/master/usecase.json))
+(A Sample JSON Object for the plan can be found [here](https://github.com/jayashree1992/Advanced_Big_Data_Indexing/blob/master/usecase.json))
 
--   GET  `/token`  - This generates a RSA-signed JWT token used to authenticate future requests.
--   POST  `/plan`  - Creates a new plan provided in the request body
--   PUT  `/plan/{id}`  - Updates an existing plan provided by the id
-    -   A valid Etag for the object should also be provided in the  `If-Match`  HTTP Request Header
--   PATCH  `/plan/{id}`  - Patches an existing plan provided by the id
-    -   A valid Etag for the object should also be provided in the  `If-Match`  HTTP Request Header
--   GET  `/plan/{id}`  - Fetches an existing plan provided by the id
-    -   An Etag for the object can be provided in the  `If-None-Match`  HTTP Request Header
-    -   If the request is successful, a valid Etag for the object is returned in the  `ETag`  HTTP Response Header
--   DELETE  `/plan/{id}`  - Deletes an existing plan provided by the id
-    -   A valid Etag for the object should also be provided in the  `If-Match`  HTTP Request Header
+- GET `/token` - This generates a RSA-signed JWT token used to authenticate future requests.
+- POST `/plan` - Creates a new plan provided in the request body
+- PUT `/plan/{id}` - Updates an existing plan provided by the id
+  - A valid Etag for the object should also be provided in the `If-Match` HTTP Request Header
+- PATCH `/plan/{id}` - Patches an existing plan provided by the id
+  - A valid Etag for the object should also be provided in the `If-Match` HTTP Request Header
+- GET `/plan/{id}` - Fetches an existing plan provided by the id
+  - An Etag for the object can be provided in the `If-None-Match` HTTP Request Header
+  - If the request is successful, a valid Etag for the object is returned in the `ETag` HTTP Response Header
+- DELETE `/plan/{id}` - Deletes an existing plan provided by the id
+  - A valid Etag for the object should also be provided in the `If-Match` HTTP Request Header
 
 ### [](https://github.com/shah-tejas/BigDataIndexing#sample-queries-to-search-the-indexed-data)Sample Queries to search the indexed data:
 
 Sample queries can be fired on the Kibana console to retrieve the indexed data
 
 1.  Query all plans
-    
+
     ```
     GET planindex/_search
     {
@@ -49,11 +47,11 @@ Sample queries can be fired on the Kibana console to retrieve the indexed data
         "match_all": {}
       }
     }
-    
+
     ```
-    
+
 2.  Query based on a nested object's objectId, alongwith the nested object
-    
+
     ```
     GET planindex/_search
     {
@@ -69,11 +67,11 @@ Sample queries can be fired on the Kibana console to retrieve the indexed data
         }
       }
     }
-    
+
     ```
-    
+
 3.  Query wildcard text fields
-    
+
     ```
     GET planindex/_search
     {
@@ -85,11 +83,11 @@ Sample queries can be fired on the Kibana console to retrieve the indexed data
         }
       }
     }
-    
+
     ```
-    
+
 4.  Query nested object's wildcard text fields
-    
+
     ```
     GET planindex/_search
     {
@@ -107,11 +105,11 @@ Sample queries can be fired on the Kibana console to retrieve the indexed data
         }
       }
     }
-    
+
     ```
-    
+
 5.  Range query on a numeric field
-    
+
     ```
     GET planindex/_search
     {
@@ -131,14 +129,16 @@ Sample queries can be fired on the Kibana console to retrieve the indexed data
       }
     }
     ```
-    
+
 ## Technology Stack
 
--   Node.js
--   Express.js
--   Redis
--   REST API
--   JSON Web Tokens
--   Elastic Search
--   Kibana
--   Postman (Tool)
+- Node.js
+- Express.js
+- Redis
+- Redis Queue
+- REST API
+- Ajv Schema
+- OAuth 2.0
+- JSON Web Tokens
+- Elastic Search
+- Postman (Tool)
